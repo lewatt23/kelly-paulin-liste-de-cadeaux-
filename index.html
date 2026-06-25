@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kelly &amp; Paulin — Mariage · Liste de Cadeaux</title>
+<meta name="description" content="Kelly & Paulin se marient le 08 Août 2026. Vous êtes invités — découvrez notre liste de cadeaux.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#faf7f0; --cream2:#f1ece0; --paper:#fffdf8;
+    --gold:#b18c3e; --gold-deep:#8a6a1c; --gold-soft:#e7d6a8;
+    --green:#5f7050; --green-deep:#3c4a33; --green-soft:#dfe6d6;
+    --ink:#2f2a22; --muted:#7a715f; --line:rgba(177,140,62,.22);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Jost',sans-serif; color:var(--ink); line-height:1.6;
+    background:
+      radial-gradient(1000px 520px at 8% -6%, rgba(177,140,62,.14), transparent 60%),
+      radial-gradient(920px 620px at 100% 6%, rgba(95,112,80,.16), transparent 60%),
+      radial-gradient(760px 520px at 50% 112%, rgba(177,140,62,.10), transparent 60%),
+      linear-gradient(180deg,#faf7f0 0%, #f3efe4 55%, #efe9da 100%);
+    background-attachment:fixed;
+    overflow-x:hidden;
+  }
+  .script{font-family:'Great Vibes',cursive;font-weight:400;line-height:1.1}
+  .serif{font-family:'Cormorant Garamond',serif}
+
+  /* ---------- decorative leaves background ---------- */
+  .petals{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+  .petal{position:absolute;top:-8vh;opacity:0;will-change:transform;animation:fall linear infinite}
+  .petal svg{display:block}
+  @keyframes fall{
+    0%{transform:translate3d(0,-10vh,0) rotate(0deg);opacity:0}
+    8%{opacity:.55}
+    92%{opacity:.55}
+    100%{transform:translate3d(var(--drift,20px),112vh,0) rotate(360deg);opacity:0}
+  }
+
+  /* ---------- intro loader (the "reveal") ---------- */
+  #loader{
+    position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;
+    background:
+      radial-gradient(700px 500px at 50% 40%, rgba(177,140,62,.10), transparent 60%),
+      linear-gradient(180deg,#faf7f0,#efe9da);
+    background-color:#faf7f0;
+    transition:opacity .8s ease, transform .9s cubic-bezier(.7,0,.3,1);
+  }
+  #loader.done{opacity:0;transform:translateY(-22px);pointer-events:none}
+  .loader-inner{text-align:center}
+  .mono-ring{
+    width:128px;height:128px;border-radius:50%;border:1.5px solid var(--gold);
+    display:flex;align-items:center;justify-content:center;margin:0 auto 18px;
+    box-shadow:0 0 0 7px #fff, 0 18px 40px -18px rgba(138,106,28,.55);
+    position:relative;animation:ringPop 1s cubic-bezier(.16,1.2,.3,1) both;
+  }
+  .mono-ring::after{
+    content:"";position:absolute;inset:-9px;border-radius:50%;
+    border:1px solid var(--gold-soft);animation:ringFade 1.1s ease .2s both;
+  }
+  @keyframes ringPop{0%{transform:scale(.55);opacity:0}60%{opacity:1}100%{transform:scale(1);opacity:1}}
+  @keyframes ringFade{0%{transform:scale(1.18);opacity:0}100%{transform:scale(1);opacity:1}}
+  .mono-ring .ini{font-family:'Great Vibes',cursive;font-size:54px;color:var(--gold-deep);line-height:1}
+  .mono-ring .ini small{font-size:30px;color:var(--gold);vertical-align:middle;margin:0 2px}
+  .loader-names{font-family:'Cormorant Garamond',serif;letter-spacing:.42em;text-transform:uppercase;
+    font-size:13px;color:var(--gold-deep);animation:rise 1s ease .5s both;padding-left:.42em}
+  @keyframes rise{0%{opacity:0;transform:translateY(14px)}100%{opacity:1;transform:translateY(0)}}
+
+  /* ---------- generic reveal on scroll ---------- */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- hero ---------- */
+  .wrap{max-width:880px;margin:0 auto;padding:0 22px;position:relative;z-index:2}
+  .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;padding:90px 0 70px}
+  .laurel{position:absolute;left:50%;transform:translateX(-50%);color:var(--gold);opacity:.5;pointer-events:none}
+  .laurel.top{top:46px}
+  .laurel.bot{bottom:30px}
+  .photos{display:flex;align-items:center;justify-content:center;gap:26px;margin-bottom:26px}
+  .pf{width:128px;height:128px;border-radius:50%;overflow:hidden;border:2px solid var(--gold);
+    box-shadow:0 0 0 7px #fff, 0 18px 40px -16px rgba(138,106,28,.5);position:relative}
+  .pf img{width:100%;height:100%;object-fit:cover;object-position:50% 28%;display:block}
+  .pf .nm{position:absolute;left:0;right:0;bottom:-26px;text-align:center;font-family:'Cormorant Garamond',serif;
+    letter-spacing:.28em;text-transform:uppercase;font-size:11px;color:var(--gold-deep);padding-left:.28em}
+  .photos .amp-heart{color:var(--gold);flex:none}
+  @media (min-width:560px){.pf{width:152px;height:152px}}
+  .eyebrow{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:var(--green);margin-bottom:6px}
+  .couple{font-family:'Great Vibes',cursive;font-size:clamp(64px,13vw,118px);color:var(--gold-deep);line-height:.95;margin:2px 0 6px}
+  .couple .amp{color:var(--gold);font-size:.78em;display:inline-block;margin:0 .06em;transform:translateY(.04em)}
+  .kicker{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,3.4vw,30px);color:var(--ink);font-weight:500}
+  .date-row{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:18px}
+  .date-row .ln{height:1px;width:46px;background:linear-gradient(90deg,transparent,var(--gold))}
+  .date-row .ln.r{background:linear-gradient(90deg,var(--gold),transparent)}
+  .date{font-family:'Cormorant Garamond',serif;letter-spacing:.36em;text-transform:uppercase;font-size:14px;color:var(--gold-deep);font-weight:600;padding-left:.36em}
+  .scroll-cue{position:absolute;bottom:54px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--green);font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-family:'Cormorant Garamond',serif}
+  .scroll-cue .dot{width:26px;height:42px;border:1.4px solid var(--green);border-radius:14px;position:relative}
+  .scroll-cue .dot::after{content:"";position:absolute;top:7px;left:50%;width:3px;height:7px;border-radius:3px;background:var(--green);transform:translateX(-50%);animation:scrolldot 1.7s ease-in-out infinite}
+  @keyframes scrolldot{0%{opacity:0;transform:translate(-50%,0)}30%{opacity:1}70%{opacity:1}100%{opacity:0;transform:translate(-50%,12px)}}
+
+  /* ---------- invitation ---------- */
+  .invite{max-width:660px;margin:0 auto;text-align:center;padding:30px 0 8px}
+  .ornament{display:flex;align-items:center;justify-content:center;gap:14px;margin:0 auto 22px;color:var(--gold)}
+  .ornament .ln{height:1px;width:60px;background:linear-gradient(90deg,transparent,var(--gold))}
+  .ornament .ln.r{background:linear-gradient(90deg,var(--gold),transparent)}
+  .section-eyebrow{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--green);font-size:20px;margin-bottom:4px}
+  .section-title{font-family:'Cormorant Garamond',serif;font-weight:700;color:var(--ink);font-size:clamp(28px,5vw,40px);line-height:1.15}
+  .invite p{font-family:'Cormorant Garamond',serif;font-size:21px;color:#4b4334;margin-top:18px;line-height:1.7}
+  .invite .signoff{font-family:'Great Vibes',cursive;font-size:34px;color:var(--gold-deep);margin-top:14px}
+
+  /* ---------- gift list ---------- */
+  .gifts{padding:40px 0 20px}
+  .gifts-head{text-align:center;margin-bottom:8px}
+  .gifts-sub{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--green);font-size:19px;margin-top:6px}
+  .stat{font-family:'Jost',sans-serif;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);text-align:center;margin:14px 0 30px}
+  .cat{margin:0 auto 34px;max-width:720px}
+  .cat-head{display:flex;align-items:center;gap:12px;margin:0 0 16px}
+  .cat-ic{width:42px;height:42px;border-radius:12px;flex:none;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(145deg,#f6ecd2,#ecddb8);color:var(--gold-deep)}
+  .cat-ic svg{width:21px;height:21px}
+  .cat-name{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:23px;color:var(--green-deep)}
+  .cat-count{margin-left:auto;font-size:12px;color:var(--gold-deep);background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:3px 11px;font-weight:500}
+  .grid{display:grid;gap:12px}
+  .card{
+    background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--gold);
+    border-radius:16px;padding:15px 17px;display:flex;align-items:center;gap:15px;
+    transition:transform .22s ease, box-shadow .22s ease, border-left-color .22s ease;
+  }
+  .card:hover{transform:translateY(-3px);box-shadow:0 18px 34px -20px rgba(80,58,10,.42);border-left-color:var(--gold-deep)}
+  .card .ic{width:40px;height:40px;flex:none;border-radius:11px;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(145deg,#f7eed6,#efe1bf);color:var(--gold-deep)}
+  .card .ic svg{width:19px;height:19px}
+  .card .body{flex:1;min-width:0}
+  .card .name{font-weight:500;font-size:15px;color:var(--ink);line-height:1.35}
+  .card .code{font-size:11px;letter-spacing:.06em;color:var(--muted);margin-top:2px}
+  .card .right{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex:none}
+  .card .price{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:17px;color:var(--gold-deep);white-space:nowrap}
+  .card .qty{font-size:11px;font-weight:500;color:var(--green-deep);background:var(--green-soft);border:1px solid rgba(95,112,80,.25);border-radius:999px;padding:2px 9px;white-space:nowrap}
+
+  /* ---------- footer ---------- */
+  footer{text-align:center;padding:44px 0 70px}
+  footer .ln{height:1px;width:120px;margin:0 auto 18px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+  footer .thanks{font-family:'Great Vibes',cursive;font-size:40px;color:var(--gold-deep);line-height:1.2}
+  footer .meta{font-family:'Cormorant Garamond',serif;letter-spacing:.3em;text-transform:uppercase;font-size:12px;color:var(--green);margin-top:14px;padding-left:.3em}
+
+  @media (max-width:560px){
+    .card{padding:13px 14px;gap:12px}
+    .card .ic{width:36px;height:36px}
+    .laurel.top{top:30px;width:120px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .petals{display:none}
+    .reveal{opacity:1;transform:none;transition:none}
+    #loader{display:none}
+    .scroll-cue .dot::after{animation:none}
+  }
+  @media print{
+    .petals,#loader,.scroll-cue,.laurel{display:none!important}
+    body{background:#fff}
+    .card{break-inside:avoid;border:1px solid #ddd}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- entrance reveal -->
+<div id="loader" aria-hidden="true">
+  <div class="loader-inner">
+    <div class="mono-ring"><span class="ini">K<small>&amp;</small>P</span></div>
+    <div class="loader-names">Kelly &amp; Paulin</div>
+  </div>
+</div>
+
+<div class="petals" id="petals" aria-hidden="true"></div>
+
+<!-- HERO -->
+<header class="hero wrap">
+  <svg class="laurel top" width="150" height="40" viewBox="0 0 150 40" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+    <path d="M75 38c0-14 0-22 0-30"/>
+    <path d="M75 12c-6-7-15-9-22-9 2 8 9 13 18 13M75 20c-6-6-14-8-22-8 2 7 9 12 18 12M75 28c-5-5-12-7-19-7 2 6 8 10 16 10"/>
+    <path d="M75 12c6-7 15-9 22-9-2 8-9 13-18 13M75 20c6-6 14-8 22-8-2 7-9 12-18 12M75 28c5-5 12-7 19-7-2 6-8 10-16 10"/>
+  </svg>
+
+  <div class="reveal" data-d="0">
+    <div class="photos">
+      <div class="pf"><img src="paulin.jpg" alt="Paulin"><span class="nm">Paulin</span></div>
+      <svg class="amp-heart" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.4-4.6-9.9-9.3C.7 8.9 2.1 5.6 5.2 5.6c2 0 3.2 1.2 3.8 2.3.6-1.1 1.8-2.3 3.8-2.3 3.1 0 4.5 3.3 3.1 6.1C19.4 16.4 12 21 12 21z"/></svg>
+      <div class="pf"><img src="kelly.jpg" alt="Kelly"><span class="nm">Kelly</span></div>
+    </div>
+    <p class="eyebrow">Nous nous marions</p>
+    <h1 class="couple">Kelly <span class="amp">&amp;</span> Paulin</h1>
+    <p class="kicker">Avec joie, nous célébrons notre union</p>
+    <div class="date-row">
+      <span class="ln"></span>
+      <span class="date">08 Août 2026</span>
+      <span class="ln r"></span>
+    </div>
+  </div>
+
+  <svg class="laurel bot" width="120" height="26" viewBox="0 0 120 26" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+    <path d="M60 2c-8 6-12 14-12 22M60 2c8 6 12 14 12 22"/>
+    <path d="M48 10c-6-2-12-1-16 1 4 4 10 5 15 2M72 10c6-2 12-1 16 1-4 4-10 5-15 2"/>
+  </svg>
+
+  <div class="scroll-cue" aria-hidden="true"><span class="dot"></span><span>Découvrir</span></div>
+</header>
+
+<!-- INVITATION -->
+<section class="wrap">
+  <div class="invite reveal">
+    <div class="ornament"><span class="ln"></span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.4-4.6-9.9-9.3C.7 8.9 2.1 5.6 5.2 5.6c2 0 3.2 1.2 3.8 2.3.6-1.1 1.8-2.3 3.8-2.3 3.1 0 4.5 3.3 3.1 6.1C19.4 16.4 12 21 12 21z"/></svg>
+      <span class="ln r"></span></div>
+    <p class="section-eyebrow">Vous êtes conviés</p>
+    <h2 class="section-title">Partagez ce jour avec nous</h2>
+    <p>Votre présence à nos côtés est déjà le plus merveilleux des cadeaux. Pour celles et ceux qui souhaitent nous accompagner davantage dans cette belle aventure, nous avons préparé avec amour cette petite liste.</p>
+    <p class="signoff">Merci d'être là</p>
+  </div>
+</section>
+
+<!-- GIFT LIST -->
+<section class="wrap gifts" id="liste">
+  <div class="gifts-head reveal">
+    <div class="ornament"><span class="ln"></span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="1.5"/><path d="M3 12h18M12 8v13M12 8S9.5 2.8 6.8 4.2 8 8 12 8zM12 8s2.5-5.2 5.2-3.8S16 8 12 8z"/></svg>
+      <span class="ln r"></span></div>
+    <p class="section-eyebrow">Avec gratitude</p>
+    <h2 class="section-title">Notre Liste de Cadeaux</h2>
+    <p class="gifts-sub">Choisissez le cadeau qui vous touche le cœur</p>
+  </div>
+  <p class="stat reveal" id="stat"></p>
+  <div id="catalog"></div>
+</section>
+
+<!-- FOOTER -->
+<footer class="wrap reveal">
+  <div class="ln"></div>
+  <p class="thanks">Avec amour, Kelly &amp; Paulin</p>
+  <p class="meta">08 · 08 · 2026</p>
+</footer>
+
+<script>
+  /* ---------- data ---------- */
+  const gifts = [
+    {code:"066459",name:"Signature congélateur 150L",price:"187.000 FCFA",qty:"01"},
+    {code:"065185",name:"Cuisinière HP inox",price:"335.000 FCFA",qty:"01"},
+    {code:"065311",name:"Micro-onde 25L LG",price:"124.500 FCFA",qty:"01"},
+    {code:"059777",name:"Desserte 03 niveaux vert color",price:"29.900 FCFA",qty:"01"},
+    {code:"059778",name:"Desserte 03 niveaux acajou color",price:"29.900 FCFA",qty:"01"},
+    {code:"064933",name:"Moulinex Blendforce 02L 600W",price:"47.900 FCFA",qty:"01"},
+    {code:"064944",name:"Moulinex KE19 kettle 1.7L plastic",price:"29.900 FCFA",qty:"01"},
+    {code:"065076",name:"Primary - poêle inox 30CM",price:"24.500 FCFA",qty:"04"},
+    {code:"051357",name:"Faitout 24CM inox",price:"36.900 FCFA",qty:"02"},
+    {code:"050000",name:"Faitout 28CM inox",price:"44.900 FCFA",qty:"02"},
+    {code:"065333",name:"Tef ensemble cuisson 07 pcs noir antiadhésif",price:"47.900 FCFA",qty:"01"},
+    {code:"008481",name:"Console Ophelia 2 tiroirs 100x30",price:"74.900 FCFA",qty:"01"},
+    {code:"019292",name:"Meuble 05 étagères",price:"39.900 FCFA",qty:"01"},
+    {code:"040129",name:"JOYA range chaussures 03 tiroirs",price:"54.900 FCFA",qty:"02"},
+    {code:"059950",name:"Table d'appoint COME",price:"12.900 FCFA",qty:"02"},
+    {code:"064856",name:"Salon ANAID",price:"800.000 FCFA",qty:"01"},
+    {code:"010666",name:"Table basse ronde JUSTINE",price:"69.000 FCFA",qty:"01"},
+    {code:"065528",name:"ONIRO lampe trépied",price:"46.900 FCFA",qty:"02"},
+    {code:"064996",name:"Samsung TV 55'' UHD 4K",price:"341.000 FCFA",qty:"01"},
+    {code:"066479",name:"LG chaîne musicale X BOOM on set",price:"224.000 FCFA",qty:"01"},
+    {code:"065460",name:"Baobab meuble TV 04 tiroirs",price:"129.000 FCFA",qty:"01"},
+    {code:"001440",name:"LOVEUSE BOHO noir",price:"159.000 FCFA",qty:"01"},
+    {code:"001875",name:"Gazon artificiel 7mm 1x4M",price:"18.800 FCFA",qty:"02"},
+    {code:"019292b",name:"Meuble 5 étages",price:"41.600 FCFA",qty:"01"},
+    {code:"015870",name:"Colonne télescopique métal gris",price:"23.900 FCFA",qty:"01"},
+    {code:"064863",name:"Midea extracteur",price:"26.900 FCFA",qty:"01"},
+    {code:"064946",name:"Moulinex cuiseur de riz 2.8L",price:"49.900 FCFA",qty:"01"},
+    {code:"064868",name:"Frigidaire HISENSE",price:"279.500 FCFA",qty:"01"},
+    {code:"045767",name:"Table à repasser 110x32CM Opale",price:"32.900 FCFA",qty:"01"},
+    {code:"001320",name:"Sèche-linge avec barre extensible crochets",price:"37.900 FCFA",qty:"01"},
+    {code:"019294",name:"Colonne rangement",price:"61.300 FCFA",qty:"01"},
+    {code:"045159",name:"Bambou artificiel pot H.180",price:"69.900 FCFA",qty:"01"},
+    {code:"042172",name:"Ficus benjamina haut H.180",price:"49.900 FCFA",qty:"01"},
+  ];
+
+  const ICONS = {
+    electro:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><line x1="6" y1="10" x2="18" y2="10"/><line x1="9" y1="5" x2="9" y2="7.5"/><line x1="9" y1="13" x2="9" y2="16"/></svg>',
+    cuisine:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16v3a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/><line x1="2.5" y1="11" x2="21.5" y2="11"/></svg>',
+    meubles:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3"/><path d="M3 12a2 2 0 0 1 2 2v3h14v-3a2 2 0 0 1 2-2 2 2 0 0 0-2-2h-1a2 2 0 0 0-2 2v1H8v-1a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z"/><line x1="6" y1="17" x2="6" y2="20"/><line x1="18" y1="17" x2="18" y2="20"/></svg>',
+    deco:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21c0-9 5.6-15 14-15 0 8.6-6 14-14 15z"/><path d="M5 21c3-5 6.2-7.2 10-9"/></svg>'
+  };
+
+  const CATS = [
+    {key:"electro", label:"Électroménager",  test:n=>/congélateur|cuisinière|micro-?onde|frigidaire|frigo|samsung|tv|chaîne|x boom|extracteur|cuiseur|blendforce|blend|kettle|moulinex/.test(n)},
+    {key:"cuisine", label:"Cuisine",         test:n=>/poêle|faitout|cuisson|antiadhésif|ustensile/.test(n)},
+    {key:"deco",    label:"Déco & Plantes",  test:n=>/bambou|ficus|gazon|benjamina|plante|lampe|oniro/.test(n)},
+    {key:"meubles", label:"Meubles & Salon", test:()=>true},
+  ];
+  const catOf = name => { const n = name.toLowerCase(); return CATS.find(c=>c.test(n)); };
+  const num = p => parseInt(p.replace(/[^0-9]/g,""),10)||0;
+  const fmt = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g,".");
+
+  /* stat line */
+  const min = Math.min(...gifts.map(g=>num(g.price)));
+  document.getElementById("stat").textContent = `${gifts.length} cadeaux  ·  à partir de ${fmt(min)} FCFA`;
+
+  /* group + render */
+  const groups = {};
+  gifts.forEach(g=>{ const c=catOf(g.name); (groups[c.key]=groups[c.key]||{cat:c,items:[]}).items.push(g); });
+  const catalog = document.getElementById("catalog");
+  CATS.forEach(c=>{
+    const grp = groups[c.key]; if(!grp) return;
+    const block = document.createElement("div");
+    block.className = "cat reveal";
+    let cards = "";
+    grp.items.forEach(g=>{
+      cards += `<div class="card">
+        <div class="ic">${ICONS[c.key]}</div>
+        <div class="body"><div class="name">${g.name}</div><div class="code">Code ${g.code}</div></div>
+        <div class="right"><span class="price">${g.price}</span><span class="qty">Qté ${g.qty}</span></div>
+      </div>`;
+    });
+    block.innerHTML = `
+      <div class="cat-head">
+        <span class="cat-ic">${ICONS[c.key]}</span>
+        <span class="cat-name">${c.label}</span>
+        <span class="cat-count">${grp.items.length}</span>
+      </div>
+      <div class="grid">${cards}</div>`;
+    catalog.appendChild(block);
+  });
+
+  /* ---------- scroll reveal ---------- */
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+  },{threshold:.12, rootMargin:"0px 0px -8% 0px"});
+  document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+
+  /* ---------- floating leaves ---------- */
+  (function(){
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if(reduce) return;
+    const host = document.getElementById("petals");
+    const leaf = '<svg width="16" height="16" viewBox="0 0 24 24" fill="%COL%" opacity=".8"><path d="M5 19c0-8 5-13 13-13 0 7.6-5.4 12.4-13 13z"/></svg>';
+    const cols = ["#7d9168","#b18c3e","#9aab86","#c8a85a"];
+    const N = 11;
+    for(let i=0;i<N;i++){
+      const s = document.createElement("span");
+      s.className = "petal";
+      const size = 10 + Math.random()*12;
+      const dur = 11 + Math.random()*12;
+      s.style.left = (Math.random()*100)+"vw";
+      s.style.setProperty("--drift",(Math.random()*120-60)+"px");
+      s.style.animationDuration = dur+"s";
+      s.style.animationDelay = (-Math.random()*dur)+"s";
+      s.innerHTML = leaf.replace("%COL%", encodeURIComponent(cols[i%cols.length]))
+                        .replace('width="16"','width="'+size+'"').replace('height="16"','height="'+size+'"');
+      host.appendChild(s);
+    }
+  })();
+
+  /* ---------- dismiss loader ---------- */
+  (function(){
+    const loader = document.getElementById("loader");
+    if(!loader) return;
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const hide = ()=>{
+      loader.classList.add("done");
+      setTimeout(()=>loader.remove(), 900);
+      // kick off hero reveal immediately
+      document.querySelectorAll(".hero .reveal").forEach(el=>el.classList.add("in"));
+    };
+    if(reduce){ loader.remove(); document.querySelectorAll(".hero .reveal").forEach(el=>el.classList.add("in")); return; }
+    window.addEventListener("load", ()=>setTimeout(hide, 1700));
+    loader.addEventListener("click", hide); // tap to skip
+    setTimeout(hide, 3200); // safety
+  })();
+</script>
+</body>
+</html>
