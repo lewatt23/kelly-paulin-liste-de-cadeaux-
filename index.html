@@ -115,7 +115,12 @@
   .gifts{padding:40px 0 20px}
   .gifts-head{text-align:center;margin-bottom:8px}
   .gifts-sub{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--green);font-size:19px;margin-top:6px}
-  .stat{font-family:'Jost',sans-serif;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);text-align:center;margin:14px 0 30px}
+  .stat{font-family:'Jost',sans-serif;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);text-align:center;margin:14px 0 18px}
+  .store-note{display:flex;align-items:center;justify-content:center;gap:11px;margin:0 auto 32px;max-width:540px;
+    background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px 20px;text-align:center}
+  .store-note svg{width:21px;height:21px;color:var(--gold);flex:none}
+  .store-note span{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--green-deep);line-height:1.4}
+  .store-note b{color:var(--gold-deep);font-weight:600}
   .cat{margin:0 auto 34px;max-width:720px}
   .cat-head{display:flex;align-items:center;gap:12px;margin:0 0 16px}
   .cat-ic{width:42px;height:42px;border-radius:12px;flex:none;display:flex;align-items:center;justify-content:center;
@@ -233,6 +238,10 @@
     <p class="gifts-sub">Choisissez le cadeau qui vous touche le cœur</p>
   </div>
   <p class="stat reveal" id="stat"></p>
+  <div class="store-note reveal">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5 5.2 4h13.6L20 9.5"/><path d="M5 9.5V20h14V9.5"/><path d="M4 9.5a2.4 2.4 0 0 0 4.7 0 2.4 2.4 0 0 0 4.7 0 2.4 2.4 0 0 0 4.7 0"/><path d="M9.5 20v-5h5v5"/></svg>
+    <span>Liste disponible au magasin <b>Arno</b> — Playce</span>
+  </div>
   <div id="catalog"></div>
 </section>
 
